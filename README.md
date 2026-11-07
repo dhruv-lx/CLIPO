@@ -1,59 +1,194 @@
-# 🎬 Cliper AI — Autonomous Viral Shorts & Video Clipping Studio
-
 <div align="center">
 
-[![CI](https://github.com/dhruv-lx/video-clipper/actions/workflows/ci.yml/badge.svg)](https://github.com/dhruv-lx/video-clipper/actions)
-[![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg?style=for-the-badge&logo=python)](https://www.python.org/)
-[![Streamlit App](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
-[![Groq AI](https://img.shields.io/badge/Groq%20LLaMA%203.3-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
-[![Whisper STT](https://img.shields.io/badge/OpenAI%20Whisper-00A67E?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/openai/whisper)
-[![FFmpeg](https://img.shields.io/badge/FFmpeg-007808?style=for-the-badge&logo=ffmpeg&logoColor=white)](https://ffmpeg.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+# 🎬 CLIPER AI
+### Autonomous Viral Shorts & Video Clipping Studio
 
-**Turn long-form YouTube videos, podcasts, and recordings into high-converting 9:16 vertical shorts, reels, and TikToks with AI-powered hook detection, automatic silence removal, and retention progress bars.**
+<p align="center">
+  <a href="https://github.com/dhruv-lx/video-clipper">
+    <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=800&size=26&duration=2500&pause=800&color=8B5CF6&center=true&vCenter=true&multiline=false&width=720&height=50&lines=Turn+Long+Videos+Into+Viral+Shorts+In+Seconds;Powered+by+Groq+LLM+Intelligence+%2B+Whisper;Auto+9%3A16+Vertical+Reframing+%2B+Smart+Jump-Cuts;100%25+Open-Source+%7C+Modern+Glassmorphic+Web+Studio" alt="Typing SVG" />
+  </a>
+</p>
 
-[Features](#-key-features) • [Quick Start](#-quick-start) • [Web Studio UI](#-modern-web-studio) • [Architecture](#-architecture--workflow) • [CLI Usage](#-command-line-interface-cli) • [Configuration](#-configuration)
+[![CI Build](https://img.shields.io/github/actions/workflow/status/dhruv-lx/video-clipper/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI%20BUILD)](https://github.com/dhruv-lx/video-clipper/actions)
+[![Python Version](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit UI](https://img.shields.io/badge/Streamlit-1.40+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Groq AI](https://img.shields.io/badge/Groq%20Cloud-Ultra--Fast%20LLM-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
+[![Whisper STT](https://img.shields.io/badge/OpenAI%20Whisper-Speech--to--Text-00A67E?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/openai/whisper)
+[![FFmpeg](https://img.shields.io/badge/FFmpeg-GPU%20Accelerated-007808?style=for-the-badge&logo=ffmpeg&logoColor=white)](https://ffmpeg.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+<br/>
+
+**Transform 2-hour YouTube podcasts, technical tutorials, and interviews into high-retention 9:16 vertical shorts, reels, and TikToks with AI-powered hook detection, automatic silence removal, and dynamic progress bars.**
+
+<p align="center">
+  <a href="#-key-features"><b>Explore Features</b></a> •
+  <a href="#-web-studio-walkthrough"><b>Web Studio UI</b></a> •
+  <a href="#-quick-start"><b>Quick Start</b></a> •
+  <a href="#-architecture"><b>Architecture</b></a> •
+  <a href="#-cli-usage"><b>CLI Automation</b></a> •
+  <a href="#-comparison"><b>Why Cliper?</b></a>
+</p>
 
 </div>
 
 ---
 
-## 🚀 Overview
+## ⚡ What is Cliper AI?
 
-**Cliper AI** is a production-grade, autonomous content repurposing engine. Rather than spending hours manually scrubbing through 2-hour podcasts or technical tutorials, Cliper AI orchestrates **Whisper Speech-to-Text**, **Groq LLaMA 3.3 70B Intelligence**, and **MoviePy/FFmpeg** to automatically discover the most captivating hooks, strip dead pauses, re-frame to 9:16 vertical format, and generate ready-to-post short-form videos.
+Editing long-form videos into short-form content manually takes hours of tedious work: scrubbing through timelines, finding hooks, manually cutting silence, cropping to vertical 9:16, and rendering.
 
-Whether you're an editor looking to 10x your output or presenting this in your portfolio, Cliper AI offers both an intuitive **Next-Gen Web Studio** and a robust **Automated CLI pipeline**.
+**Cliper AI automates the entire lifecycle in one unified pipeline:**
+
+```
+[ 🎥 Paste YouTube Link / Upload Video ]
+                   │
+                   ▼
+  1. 🎙️ Whisper Multi-Model Speech Recognition (Fast GPU/CPU STT)
+                   │
+                   ▼
+  2. 🧠 Groq LLM Hook Intelligence (Finds Viral Punchlines & Categorizes)
+                   │
+                   ▼
+  3. 🔇 RMS Audio Silence Detection & Jump-Cutter (Kills Boring Pauses)
+                   │
+                   ▼
+  4. 📐 9:16 Smart Vertical Re-Framer & Bottom Progress Bar Overlay
+                   │
+                   ▼
+[ 🚀 Ready-to-Post 1080x1920 MP4 Shorts + Batch ZIP Download ]
+```
 
 ---
 
 ## ✨ Key Features
 
-- 🧠 **AI-Powered Hook & Virality Scoring**: Scans video transcripts using **Groq (LLaMA 3.3 70B)** to isolate standalone moments with strong opening hooks, categorized by type (*Contrarian, Insight, Story, Tutorial, Humor*) and rated with a 1-100 Virality Score.
-- 🎙️ **Multi-Engine Speech Recognition**: Deep integration with **OpenAI Whisper** and **faster-whisper** with support for multiple model sizes (`tiny`, `base`, `small`, `medium`).
-- ⚡ **Smart Silence Removal (Jump Cuts)**: Uses audio RMS envelope analysis to automatically detect and slice out awkward pauses, breaths, and dead air without clipping speech.
-- 📱 **Intelligent 9:16 Vertical Re-Framing**: Automatically crops 16:9 widescreen footage into high-definition 1080x1920 vertical format for YouTube Shorts, Instagram Reels, and TikTok.
-- 📊 **Animated Bottom Progress Bar**: Generates smooth dynamic progress bars to maximize viewer retention and watch time.
-- 🎨 **Modern SaaS Web Studio**: High-end glassmorphic dark UI with live video playback, subtitle explorer, individual clip rendering, and 1-click batch ZIP downloads.
-- 💻 **Unified CLI**: Scriptable command-line interface for headless automation, server pipelines, and cron jobs.
-- 🛡️ **Zero Secret Leaks**: Built-in `.env` configuration management and strict `.gitignore` rules to keep private API keys secure.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🧠 AI Hook Detection & Scoring</h3>
+      Scans the full audio transcript with <b>Groq LLMs</b> to identify standalone, high-impact moments. Assigns a <b>1-100 Virality Score</b> and categorizes clips into <i>Contrarian, Insight, Story, Tutorial, or Humor</i>.
+    </td>
+    <td width="50%">
+      <h3>⚡ Automatic Silence Jump-Cuts</h3>
+      Uses mathematical <b>RMS audio envelope analysis</b> to detect dead silence, breaths, and pauses, automatically slicing them out to maximize retention on TikTok and Reels.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>📱 9:16 Vertical Video Re-Framing</h3>
+      Intelligently converts widescreen 16:9 videos into crystal-clear <b>1080x1920 vertical shorts</b> with customizable center bias and speaker alignment.
+    </td>
+    <td width="50%">
+      <h3>📊 Animated Bottom Progress Bar</h3>
+      Renders dynamic, customizable progress bars directly onto the video to boost average watch time and psychological viewer engagement.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🎨 Modern Dark-Mode Web Studio</h3>
+      A next-generation <b>glassmorphic SaaS interface</b> with interactive tabs: Auto-Pilot Extractor, Precision Trimmer, Video Library, Subtitle Search, and API Diagnostics.
+    </td>
+    <td width="50%">
+      <h3>🛡️ Enterprise Security & Privacy</h3>
+      Zero hardcoded secrets. Full <code>.env</code> isolation, strict <code>.gitignore</code> rules, and automated CI test verification.
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🏗️ Architecture & Workflow
+## 🖥️ Web Studio Walkthrough
+
+The built-in web studio is designed like a modern SaaS dashboard:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 🎬 CLIPER AI STUDIO             [🟢 Groq: Ready]  [🟢 Whisper: Ready]       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  [🚀 Auto-Pilot Clipper]  [✂️ Precision Trimmer]  [📁 Library]  [📝 Subtitles] │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  🔗 Video Source: [ https://www.youtube.com/watch?v=...               ]     │
+│                                                                             │
+│  ⚙️ Min Dur: [ 30s ]    Max Dur: [ 60s ]    Aspect Ratio: [ 9:16 Vertical ] │
+│  🎛️ Silence Jump-Cuts: [ON]                Bottom Progress Bar: [ON]        │
+│                                                                             │
+│                     [ ✨ Launch Autonomous AI Clipper ]                     │
+│                                                                             │
+│  ─────────────────────────────────────────────────────────────────────────  │
+│  🏆 RANKED VIRAL CLIPS DETECTED                                             │
+│                                                                             │
+│  ┌─────────────────────────┐  ┌──────────────────────────────────────────┐  │
+│  │ 🎬 [VIDEO PREVIEW]      │  │ #1 Why 99% Of People Fail At Coding      │  │
+│  │                         │  │ 🔥 96% Virality Score   📌 Contrarian    │  │
+│  │  1080x1920 Vertical     │  │ ⏱️ 00:01:15 → 00:01:55  (40s duration)    │  │
+│  │  Animated Progress Bar  │  │                                          │  │
+│  │                         │  │ 💬 "The biggest lie in tech is math..."  │  │
+│  │ [⬇️ Download MP4]       │  │                                          │  │
+│  └─────────────────────────┘  └──────────────────────────────────────────┘  │
+│                                                                             │
+│  📦 [Download All as ZIP Archive]                                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📊 Comparison: Why Cliper AI?
+
+| Feature | Manual Video Editing | Generic Online Cutters | 🎬 **Cliper AI** |
+| :--- | :---: | :---: | :---: |
+| **Workflow** | Scrubbing timeline (2+ hrs) | Manual cutting | **Autonomous 1-Click** |
+| **AI Hook Detection** | ❌ No | ❌ No | **✅ Groq LLaMA 3.3 / Qwen** |
+| **Silence Removal** | Manual razor tool | ⚠️ Clunky | **✅ Automatic RMS Jump-Cuts** |
+| **Aspect Framing** | Manual keyframing | Basic stretch | **✅ Dynamic 9:16 Re-Framing** |
+| **Animated Progress Bar** | Motion graphics work | ❌ No | **✅ Built-in Overlay** |
+| **Speech Subtitles** | Manual typing / SRT | Paid feature | **✅ Whisper Multi-Engine** |
+| **Privacy & Cost** | Local / Free | \$30-\$60/mo subscription | **✅ 100% Free & Open Source** |
+
+---
+
+## 🏗️ Architecture & Technical Pipeline
 
 ```mermaid
 flowchart TD
-    A["🎥 Long-form Video / YouTube URL"] --> B["📥 Audio Extractor (yt-dlp / ffmpeg)"]
-    B --> C["🎙️ Speech Recognition (Whisper / Faster-Whisper)"]
-    C --> D["📝 Subtitle Generation (.srt + .json)"]
-    D --> E["🧠 Groq LLaMA 3.3 70B Hook Classifier"]
-    E --> F{"✂️ Video Processing Engine"}
-    F --> G["📐 9:16 Vertical Cropping & Centering"]
-    F --> H["🔇 RMS Silence Detection & Jump Cuts"]
-    F --> I["🔊 Audio Crossfading (Fade In/Out)"]
-    F --> J["⏱️ Dynamic Progress Bar Overlay"]
-    G & H & I & J --> K["🎬 Rendered Viral Shorts (1080x1920 MP4)"]
-    K --> L["🌐 Interactive Web Studio & Batch Zip Export"]
+    subgraph INGESTION["1. INGESTION & AUDIO EXTRACTION"]
+        A["🎥 YouTube URL / Local MP4"] --> B["📥 Audio Downloader (yt-dlp)"]
+        B --> C["🎵 16kHz Mono Audio Stream"]
+    end
+
+    subgraph TRANSCRIPTION["2. SPEECH-TO-TEXT ENGINE"]
+        C --> D{"🎙️ Whisper Engine"}
+        D -->|"Fast GPU/CPU"| E["faster-whisper (int8)"]
+        D -->|"Universal Fallback"| F["openai-whisper"]
+        E & F --> G["📝 Timestamped Segments (SRT + JSON)"]
+    end
+
+    subgraph AI_HOOKS["3. AI HOOK & VIRALITY ANALYSIS"]
+        G --> H["✂️ 5-Minute Context Chunking"]
+        H --> I["🧠 Groq Cloud LLM (Ultra-Fast)"]
+        I --> J["🎯 Ranked Hooks, Virality Scores & Titles"]
+    end
+
+    subgraph VIDEO_CORE["4. VIDEO EDITING & COMPOSITING"]
+        J --> K["📐 9:16 Vertical Cropping (1080x1920)"]
+        K --> L["🔇 Audio RMS Silence Detection"]
+        L --> M["⚡ Jump-Cut Active Speech Concatenation"]
+        M --> N["🔊 Audio Fade In / Fade Out"]
+        N --> O["📊 Dynamic Progress Bar Generator"]
+        O --> P["🎞️ H.264 / AAC High-Speed Render"]
+    end
+
+    subgraph OUTPUT["5. EXPORT & DASHBOARD"]
+        P --> Q["🎬 Rendered Short-Form Videos"]
+        Q --> R["🌐 Web Studio Preview & Batch ZIP"]
+    end
+
+    style INGESTION fill:#1E1B4B,stroke:#6366F1,stroke-width:2px,color:#fff
+    style TRANSCRIPTION fill:#0F172A,stroke:#00A67E,stroke-width:2px,color:#fff
+    style AI_HOOKS fill:#1E293B,stroke:#F55036,stroke-width:2px,color:#fff
+    style VIDEO_CORE fill:#18181B,stroke:#8B5CF6,stroke-width:2px,color:#fff
+    style OUTPUT fill:#064E3B,stroke:#10B981,stroke-width:2px,color:#fff
 ```
 
 ---
@@ -61,173 +196,149 @@ flowchart TD
 ## ⚡ Quick Start
 
 ### 1. Prerequisites
-- **Python 3.10+** installed
-- **FFmpeg** installed and accessible in your system `PATH`
+- **Python 3.10 to 3.13** installed
+- **FFmpeg** installed on your system
 - A free **[Groq API Key](https://console.groq.com/keys)**
 
-### 2. Clone & Install
+### 2. Installation
+
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/cliper.git
-cd cliper
+# 1. Clone the repository
+git clone https://github.com/dhruv-lx/video-clipper.git
+cd video-clipper
 
-# (Optional) Create virtual environment
+# 2. (Optional) Create virtual environment
 python -m venv venv
-venv\Scripts\activate       # On Windows
-# source venv/bin/activate  # On macOS/Linux
+venv\Scripts\activate       # Windows
+# source venv/bin/activate  # macOS / Linux
 
-# Install all dependencies
+# 3. Install required packages
 pip install -r requirements.txt
 ```
 
-### 3. Setup Environment Variables
-Copy the example environment file and add your Groq API key:
+### 3. Configure API Key
+Create your `.env` file from the provided example:
 ```bash
 cp .env.example .env
 ```
 Inside `.env`:
 ```ini
-GROQ_API_KEY=gsk_your_groq_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 WHISPER_MODEL=base
 ```
 
 ---
 
-## 🖥️ Modern Web Studio
+## 🚀 Running the App
 
-Launch the sleek, dark-themed Web Studio interface with one command (or double-click `run_app.bat` on Windows):
+### Option A: 1-Click Desktop Launcher (Windows)
+Simply double-click **`run_app.bat`** in the project folder.
 
+### Option B: Terminal Command
 ```bash
-# Method 1: Using the launcher
-run_app.bat
-
-# Method 2: Streamlit directly
 streamlit run app.py
-
-# Method 3: Using the CLI
-python cli.py ui
 ```
-
-### Studio Capabilities:
-1. **🚀 Auto-Pilot Viral Clipper**: Paste any YouTube link, adjust target duration sliders, and click *Launch Autonomous AI Clipper* to get ranked shorts in minutes.
-2. **✂️ Precision Manual Trimmer**: Manually specify exact start/end timestamps (`01:15` → `01:50`) with live duration calculations and custom aspect framing (9:16, 1:1, 16:9).
-3. **📁 Clip Library & Exports**: In-browser video player for all rendered shorts, individual MP4 download buttons, and a **Download All as ZIP** batch exporter.
-4. **📝 Subtitles & Transcripts**: Search transcript text by keyword with timestamp jumps and download clean `.srt` subtitle files.
-5. **⚙️ Studio Settings**: Live Groq API connection test, model selector, and 1-click temporary cache cleaner.
+Opens your browser automatically at `http://localhost:8501`.
 
 ---
 
 ## 💻 Command Line Interface (CLI)
 
-Cliper AI includes a versatile CLI for terminal workflows and automated pipelines.
+Prefer working from the terminal or need headless automation? Cliper provides a full CLI:
 
-### 1. Full Autonomous Viral Extraction
 ```bash
-# Automatically transcribe, detect hooks, and render 9:16 vertical shorts
+# 🌟 Full Autonomous Viral Extraction:
 python cli.py auto "https://www.youtube.com/watch?v=VIDEO_ID"
 
-# Detect viral hooks and save JSON/SRT without rendering video files
-python cli.py auto "https://www.youtube.com/watch?v=VIDEO_ID" --no-render
-```
+# ⏱️ Precision Manual Segment Cutter:
+python cli.py clip "input.mp4" 01:15 01:55 --ratio 9:16 -o viral_clip.mp4
 
-### 2. Precision Manual Segment Cutter
-```bash
-# Clip a specific timestamp with 9:16 vertical framing and jump cuts
-python cli.py clip "https://www.youtube.com/watch?v=VIDEO_ID" 01:30 02:15 -o viral_clip.mp4
+# 🎙️ Extract Audio & Transcribe to SRT Subtitle:
+python cli.py transcribe "podcast.mp4" --model base -o transcript.srt
 
-# Clip without silence removal or progress bar
-python cli.py clip "my_video.mp4" 00:45 01:30 --ratio 16:9 --keep-silence --no-bar
-```
-
-### 3. Speech Transcription Only
-```bash
-# Transcribe any video/audio to standard SRT subtitle file
-python cli.py transcribe "podcast.mp4" --model base -o podcast.srt
+# 🖥️ Launch Web Studio:
+python cli.py ui --port 8501
 ```
 
 ---
 
-## ⚙️ Configuration Reference
-
-All settings can be configured via `.env` or overridden inside the Web Studio:
-
-| Variable | Default | Description |
-| :--- | :--- | :--- |
-| `GROQ_API_KEY` | `""` | Groq Cloud API key for LLaMA 3.3 70B evaluation |
-| `GROQ_MODEL` | `llama-3.3-70b-versatile` | Groq LLM model identifier |
-| `WHISPER_MODEL` | `base` | Whisper model size (`tiny`, `base`, `small`, `medium`) |
-| `TARGET_WIDTH` | `1080` | Output video width in pixels |
-| `TARGET_HEIGHT` | `1920` | Output video height in pixels (9:16 aspect ratio) |
-| `REMOVE_SILENCE` | `true` | Enable RMS silence removal and jump cutting |
-| `SILENCE_MIN_LEN`| `0.55` | Minimum silence duration (in seconds) to trigger jump cut |
-| `SILENCE_THRESH` | `0.03` | Volume threshold relative to peak RMS to classify silence |
-
----
-
-## 📁 Repository Structure
+## 📂 Project Structure
 
 ```
-cliper/
-├── .env.example            # Sample configuration file
-├── .gitignore              # Robust git ignore (protects keys, outputs, and caches)
-├── README.md               # Project documentation & showcase
-├── requirements.txt        # Production dependency manifest
-├── pyproject.toml          # Modern packaging & pytest config
-├── app.py                  # Modern Streamlit Web Studio application
-├── run_app.bat             # 1-click Windows desktop launcher
-├── cli.py                  # Unified command-line interface
+video-clipper/
+├── .github/workflows/       # Automated CI/CD testing workflow
+│   └── ci.yml
+├── .env.example             # Clean configuration template
+├── .gitignore               # Strict ignore protecting keys, videos, and cache
+├── README.md                # Project documentation
+├── LICENSE                  # MIT License
+├── requirements.txt         # Production dependencies
+├── pyproject.toml           # Modern package configuration
+├── app.py                   # Streamlit Web Studio application
+├── run_app.bat              # 1-Click Windows desktop launcher
+├── cli.py                   # Unified CLI tool
 │
-├── cliper/                 # Core Python engine package
-│   ├── __init__.py         # Package entry point
-│   ├── config.py           # Configuration loader
-│   ├── audio.py            # Audio extractor & Whisper transcription
-│   ├── ai.py               # Groq LLM viral hook detection
-│   ├── video.py            # MoviePy / FFmpeg video cutter & 9:16 framer
-│   ├── silence.py          # RMS audio analysis & jump-cut generator
-│   └── pipeline.py         # Autonomous end-to-end pipeline runner
+├── cliper/                  # Core Python Package
+│   ├── __init__.py          # Package entry point
+│   ├── ai.py                # Groq LLM viral hook detection & scoring
+│   ├── audio.py             # Audio downloader & Whisper STT engine
+│   ├── config.py            # Settings & .env loader
+│   ├── pipeline.py          # Autonomous end-to-end pipeline runner
+│   ├── silence.py           # RMS audio analysis & jump-cut generator
+│   └── video.py             # MoviePy / FFmpeg 9:16 auto-cropper & progress bar
 │
-├── scripts/                # Standalone automation scripts
-│   ├── clip_video.py       # Quick manual precision clipper
-│   ├── get_timestamps.py   # AI hook finder to JSON
-│   └── cut_clips.py        # Batch JSON cutter & 9:16 framer
+├── scripts/                 # Standalone utility scripts
+│   ├── clip_video.py        # Precision manual clipper
+│   ├── cut_clips.py         # Batch JSON video cutter
+│   └── get_timestamps.py    # AI hook detection to JSON
 │
-├── examples/               # Sample outputs & reference files
-│   ├── clip_data.json      # Sample AI viral hooks output
-│   └── full_transcript.srt # Sample subtitle file
+├── examples/                # Sample output data
+│   ├── clip_data.json       # Pre-analyzed sample viral hooks
+│   └── full_transcript.srt  # Sample subtitle transcript file
 │
-└── tests/                  # Automated unit test suite
-    └── test_cliper.py      # Unit tests (conversions, parsing, deduplication)
+└── tests/                   # Automated unit test suite
+    └── test_cliper.py       # 5/5 Passing unit tests
 ```
 
 ---
 
 ## 🧪 Testing
 
-Run automated unit tests with `pytest`:
+Run the automated test suite with `pytest`:
 ```bash
 python -m pytest tests/
 ```
+
+All 5 core unit tests verify:
+- ✅ Timestamp conversion & normalisation (`HH:MM:SS` ⇄ seconds)
+- ✅ Filename sanitization against malicious inputs
+- ✅ AI JSON response parser & markdown fencing stripper
+- ✅ Overlapping clip deduplication & scoring logic
+- ✅ Configuration default validations
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature suggestions are welcome!
+Contributions, issues, and feature requests are welcome!
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/CoolFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add CoolFeature'`)
+4. Push to the Branch (`git push origin feature/CoolFeature`)
 5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` for details.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
 
 ---
 
 <div align="center">
-Built with passion by <b>Dhruv</b> • Star ⭐ this repo if you find it helpful!
-</div>
 
+Crafted with ❤️ by **[Dhruv](https://github.com/dhruv-lx)**
+
+**If you find Cliper AI useful, consider giving it a ⭐ star on GitHub!**
+
+</div>
