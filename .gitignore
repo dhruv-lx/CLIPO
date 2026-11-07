@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets (CRITICAL: Never commit API keys!)
+.env
+.env.*
+!.env.example
+secrets.toml
+.streamlit/secrets.toml
+
+# Video & Audio temporary download caches
+__audio_*
+__dl_*
+__temp_*
+*.m4a
+*.mp3
+*.wav
+
+# Generated clip outputs (keep repo clean and light)
+output/
+outputs/
+clips/
+clip_*.mp4
+*.mp4
+!examples/*.mp4
+
+# Subtitles & transcripts generated at runtime
+*.srt
+!examples/*.srt
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# IDE files
+.vscode/
+.idea/
