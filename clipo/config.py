@@ -1,5 +1,5 @@
 """
-Configuration and settings management for Cliper AI.
+Configuration and settings management for Clipo AI.
 Reads from environment variables and .env file.
 """
 
@@ -15,7 +15,7 @@ load_dotenv(ROOT_DIR / ".env")
 
 @dataclass
 class Config:
-    """Global configuration settings for Cliper."""
+    """Global configuration settings for Clipo."""
     # Groq API configuration
     groq_api_key: str = field(default_factory=lambda: os.getenv("GROQ_API_KEY", ""))
     groq_model: str = field(default_factory=lambda: os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b"))

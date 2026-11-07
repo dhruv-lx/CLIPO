@@ -1,6 +1,6 @@
 """
 cut_clips.py — read clip_data.json, cut + crop 9:16, jump cuts, progress bar, audio fades
-Uses cliper core engine.
+Uses clipo core engine.
 """
 
 import os
@@ -13,8 +13,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-import cliper
-from cliper.config import default_config
+import clipo
+from clipo.config import default_config
 
 
 def main():
@@ -48,7 +48,7 @@ def main():
 
         print(f"\n[{idx}/{len(clips)}] Rendering '{title}' ({start} -> {end})...")
         try:
-            rendered = cliper.cut_clip(
+            rendered = clipo.cut_clip(
                 source_file_or_url=source,
                 start=start,
                 end=end,

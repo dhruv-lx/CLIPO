@@ -11,8 +11,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-import cliper
-from cliper.audio import ts_to_sec
+import clipo
+from clipo.audio import ts_to_sec
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
 
     print(f"\n✂️ Clipping {start} -> {end} from {source}...")
     try:
-        out = cliper.cut_clip(
+        out = clipo.cut_clip(
             source_file_or_url=source,
             start=start,
             end=end,

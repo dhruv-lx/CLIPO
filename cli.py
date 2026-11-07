@@ -1,5 +1,5 @@
 """
-Cliper AI — Command Line Interface
+Clipo AI — Command Line Interface
 Run full AI viral clipping, precision trimming, transcription, or launch the web studio.
 """
 
@@ -7,21 +7,21 @@ import sys
 import argparse
 from pathlib import Path
 
-import cliper
-from cliper.config import default_config
-from cliper.audio import sec_to_ts, ts_to_sec
+import clipo
+from clipo.config import default_config
+from clipo.audio import sec_to_ts, ts_to_sec
 
 
 def print_banner():
     banner = r"""
-   _____ _ _                     _____ 
-  / ____| (_)                   |  __ \
- | |    | |_ _ __   ___ _ __    | |__) |
- | |    | | | '_ \ / _ \ '__|   |  ___/ 
- | |____| | | |_) |  __/ |      | |     
-  \_____|_|_| .__/ \___|_|      |_|     
-            | |                         
-            |_|   AI Viral Shorts Studio
+   _____ _      _____ _____   ____  
+  / ____| |    |_   _|  __ \ / __ \ 
+ | |    | |      | | | |__) | |  | |
+ | |    | |      | | |  ___/| |  | |
+ | |____| |____ _| |_| |    | |__| |
+  \_____|______|_____|_|     \____/ 
+                                    
+            AI Viral Shorts Studio
     """
     print(banner)
 
@@ -32,7 +32,7 @@ def cmd_auto(args):
     print(f"🎬 Starting Auto-Pilot Viral Clipper on: {source}")
     print(f"⚙️ Config: Whisper={default_config.whisper_model}, Model={default_config.groq_model}, SilenceRemoval={default_config.remove_silence}")
     
-    result = cliper.run_pipeline(
+    result = clipo.run_pipeline(
         source=source,
         config=default_config,
         render_videos=not args.no_render,
@@ -64,7 +64,7 @@ def cmd_clip(args):
     print(f"✂️ Cutting precision clip from: {source}")
     print(f"⏱️ Range: {start} -> {end} (Aspect Ratio: {args.ratio})")
     
-    out_file = cliper.cut_clip(
+    out_file = clipo.cut_clip(
         source_file_or_url=source,
         start=start,
         end=end,
@@ -81,24 +81,24 @@ def cmd_transcribe(args):
     source = args.source
     print(f"🎙️ Transcribing: {source}")
     
-    audio_path = cliper.download_audio(source, output_dir=default_config.cache_dir)
-    segments = cliper.transcribe_audio(audio_path, model_name=args.model)
+    audio_path = clipo.download_audio(source, output_dir=default_config.cache_dir)
+    segments = clipo.transcribe_audio(audio_path, model_name=args.model)
     out_srt = Path(args.output or f"transcript_{Path(source).stem}.srt")
-    cliper.save_srt(segments, out_srt)
+    clipo.save_srt(segments, out_srt)
     print(f"✅ Saved transcript to: {out_srt.resolve()}")
 
 
 def cmd_ui(args):
     import subprocess
     print_banner()
-    print("🚀 Launching Cliper AI Web Studio on http://localhost:8501 ...")
+    print("🚀 Launching Clipo AI Web Studio on http://localhost:8501 ...")
     subprocess.run([sys.executable, "-m", "streamlit", "run", "app.py", "--server.port", str(args.port)])
 
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="cliper",
-        description="Cliper AI — Autonomous Viral Shorts & Video Clipping Studio",
+        prog="clipo",
+        description="Clipo AI — Autonomous Viral Shorts & Video Clipping Studio",
     )
     subparsers = parser.add_subparsers(dest="command", help="Available sub-commands")
 

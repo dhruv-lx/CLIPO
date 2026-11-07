@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎬 CLIPER AI
+# 🎬 CLIPO AI
 ### Autonomous Viral Shorts & Video Clipping Studio
 
 <p align="center">
@@ -27,18 +27,18 @@
   <a href="#-quick-start"><b>Quick Start</b></a> •
   <a href="#-architecture"><b>Architecture</b></a> •
   <a href="#-cli-usage"><b>CLI Automation</b></a> •
-  <a href="#-comparison"><b>Why Cliper?</b></a>
+  <a href="#-comparison"><b>Why Clipo?</b></a>
 </p>
 
 </div>
 
 ---
 
-## ⚡ What is Cliper AI?
+## ⚡ What is Clipo AI?
 
 Editing long-form videos into short-form content manually takes hours of tedious work: scrubbing through timelines, finding hooks, manually cutting silence, cropping to vertical 9:16, and rendering.
 
-**Cliper AI automates the entire lifecycle in one unified pipeline:**
+**Clipo AI automates the entire lifecycle in one unified pipeline:**
 
 ```
 [ 🎥 Paste YouTube Link / Upload Video ]
@@ -104,7 +104,7 @@ The built-in web studio is designed like a modern SaaS dashboard:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ 🎬 CLIPER AI STUDIO             [🟢 Groq: Ready]  [🟢 Whisper: Ready]       │
+│ 🎬 CLIPO AI STUDIO             [🟢 Groq: Ready]  [🟢 Whisper: Ready]       │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  [🚀 Auto-Pilot Clipper]  [✂️ Precision Trimmer]  [📁 Library]  [📝 Subtitles] │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -134,9 +134,9 @@ The built-in web studio is designed like a modern SaaS dashboard:
 
 ---
 
-## 📊 Comparison: Why Cliper AI?
+## 📊 Comparison: Why Clipo AI?
 
-| Feature | Manual Video Editing | Generic Online Cutters | 🎬 **Cliper AI** |
+| Feature | Manual Video Editing | Generic Online Cutters | 🎬 **Clipo AI** |
 | :--- | :---: | :---: | :---: |
 | **Workflow** | Scrubbing timeline (2+ hrs) | Manual cutting | **Autonomous 1-Click** |
 | **AI Hook Detection** | ❌ No | ❌ No | **✅ Groq LLaMA 3.3 / Qwen** |
@@ -244,7 +244,7 @@ Opens your browser automatically at `http://localhost:8501`.
 
 ## 💻 Command Line Interface (CLI)
 
-Prefer working from the terminal or need headless automation? Cliper provides a full CLI:
+Prefer working from the terminal or need headless automation? Clipo provides a full CLI:
 
 ```bash
 # 🌟 Full Autonomous Viral Extraction:
@@ -278,7 +278,7 @@ video-clipper/
 ├── run_app.bat              # 1-Click Windows desktop launcher
 ├── cli.py                   # Unified CLI tool
 │
-├── cliper/                  # Core Python Package
+├── clipo/                  # Core Python Package
 │   ├── __init__.py          # Package entry point
 │   ├── ai.py                # Groq LLM viral hook detection & scoring
 │   ├── audio.py             # Audio downloader & Whisper STT engine
@@ -297,7 +297,7 @@ video-clipper/
 │   └── full_transcript.srt  # Sample subtitle transcript file
 │
 └── tests/                   # Automated unit test suite
-    └── test_cliper.py       # 5/5 Passing unit tests
+    └── test_clipo.py       # 5/5 Passing unit tests
 ```
 
 ---
@@ -339,6 +339,6 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 
 Crafted with ❤️ by **[Dhruv](https://github.com/dhruv-lx)**
 
-**If you find Cliper AI useful, consider giving it a ⭐ star on GitHub!**
+**If you find Clipo AI useful, consider giving it a ⭐ star on GitHub!**
 
 </div>

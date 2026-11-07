@@ -1,7 +1,7 @@
 @echo off
-title Cliper AI - Autonomous Viral Shorts Studio
+title Clipo AI - Autonomous Viral Shorts Studio
 echo ===================================================
-echo   🎬 Launching Cliper AI Studio Web Application
+echo   🎬 Launching Clipo AI Studio Web Application
 echo ===================================================
 echo.
 

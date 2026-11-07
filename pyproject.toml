@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cliper-ai"
+name = "clipo-ai"
 version = "1.0.0"
 description = "Autonomous AI-Powered Viral Shorts & Video Clipping Studio"
 readme = "README.md"
@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.scripts]
-cliper = "cli:main"
+clipo = "cli:main"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

@@ -16,8 +16,8 @@ if str(ROOT_DIR) not in sys.path:
 
 load_dotenv(ROOT_DIR / ".env")
 
-import cliper
-from cliper.config import default_config
+import clipo
+from clipo.config import default_config
 
 
 def main():
@@ -35,17 +35,17 @@ def main():
     cache_dir = ROOT_DIR / ".cache"
     cache_dir.mkdir(exist_ok=True)
 
-    audio_path = cliper.download_audio(url, output_dir=cache_dir)
+    audio_path = clipo.download_audio(url, output_dir=cache_dir)
     try:
-        segments = cliper.transcribe_audio(audio_path, model_name=default_config.whisper_model)
+        segments = clipo.transcribe_audio(audio_path, model_name=default_config.whisper_model)
         print(f"Transcribed {len(segments)} spoken segments.")
 
         srt_path = ROOT_DIR / "examples" / "full_transcript.srt"
-        cliper.save_srt(segments, srt_path)
+        clipo.save_srt(segments, srt_path)
         print(f"Saved {srt_path}")
 
         print("🤖 Evaluating viral hooks with Groq AI (LLaMA 3.3 70B)…")
-        clips = cliper.find_viral_clips(
+        clips = clipo.find_viral_clips(
             segments=segments,
             api_key=api_key,
             model=default_config.groq_model,

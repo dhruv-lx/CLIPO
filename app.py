@@ -1,5 +1,5 @@
 """
-Cliper AI — Modern Autonomous Viral Shorts & Video Clipping Studio
+Clipo AI — Modern Autonomous Viral Shorts & Video Clipping Studio
 Built with Streamlit, MoviePy, OpenAI Whisper, and Groq LLMs.
 """
 
@@ -19,18 +19,18 @@ ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-import cliper
-from cliper.config import Config, default_config
-from cliper.audio import sec_to_ts, ts_to_sec, sanitize_filename
-from cliper.video import cut_clip
-from cliper.pipeline import run_pipeline
+import clipo
+from clipo.config import Config, default_config
+from clipo.audio import sec_to_ts, ts_to_sec, sanitize_filename
+from clipo.video import cut_clip
+from clipo.pipeline import run_pipeline
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG & MODERN CUSTOM THEME
 # ─────────────────────────────────────────────────────────────────────────────
 
 st.set_page_config(
-    page_title="Cliper AI — Viral Shorts Studio",
+    page_title="Clipo AI — Viral Shorts Studio",
     page_icon="🎬",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -157,7 +157,7 @@ st.markdown("""
 # ─────────────────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown("### 🎬 **Cliper AI Studio**")
+    st.markdown("### 🎬 **Clipo AI Studio**")
     st.caption("Autonomous Viral Shorts Engine • v1.0.0")
     st.divider()
 
@@ -218,7 +218,7 @@ with st.sidebar:
 st.markdown("""
 <div class="hero-container">
     <div class="hero-title">
-        <span>🎬</span> Cliper AI — Autonomous Shorts Studio
+        <span>🎬</span> Clipo AI — Autonomous Shorts Studio
     </div>
     <div class="hero-subtitle">
         Transform long-form YouTube videos, podcasts, and recordings into high-converting <b>9:16 vertical shorts, reels, and TikToks</b>.
@@ -247,7 +247,7 @@ tab_auto, tab_manual, tab_library, tab_transcripts, tab_settings = st.tabs([
 
 with tab_auto:
     st.markdown("### 🤖 Autonomous Viral Clip Extraction")
-    st.markdown("Paste a YouTube link or specify a local video file. Cliper AI will automatically transcribe speech, evaluate talking points for retention hooks with Groq AI, and render vertical clips with animated progress bars.")
+    st.markdown("Paste a YouTube link or specify a local video file. Clipo AI will automatically transcribe speech, evaluate talking points for retention hooks with Groq AI, and render vertical clips with animated progress bars.")
 
     col1, col2 = st.columns([3, 1])
     with col1:
@@ -515,7 +515,7 @@ with tab_library:
             st.download_button(
                 "📦 Download All as ZIP",
                 data=zip_buffer,
-                file_name=f"cliper_all_shorts_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip",
+                file_name=f"clipo_all_shorts_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip",
                 mime="application/zip",
                 use_container_width=True,
             )

@@ -1,5 +1,5 @@
 """
-Cliper AI — Autonomous Viral Shorts & Video Clipping Studio
+Clipo AI — Autonomous Viral Shorts & Video Clipping Studio
 """
 
 __version__ = "1.0.0"

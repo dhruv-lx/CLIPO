@@ -1,12 +1,12 @@
 """
-Unit tests for Cliper AI package.
+Unit tests for Clipo AI package.
 """
 
 import pytest
 from pathlib import Path
-from cliper.audio import ts_to_sec, sec_to_ts, normalise_ts, sanitize_filename
-from cliper.ai import parse_clips_json, merge_overlapping_clips
-from cliper.config import Config
+from clipo.audio import ts_to_sec, sec_to_ts, normalise_ts, sanitize_filename
+from clipo.ai import parse_clips_json, merge_overlapping_clips
+from clipo.config import Config
 
 
 def test_timestamp_conversions():
