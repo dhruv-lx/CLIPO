@@ -2,6 +2,7 @@
 
 <div align="center">
 
+[![CI](https://github.com/dhruv-lx/video-clipper/actions/workflows/ci.yml/badge.svg)](https://github.com/dhruv-lx/video-clipper/actions)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg?style=for-the-badge&logo=python)](https://www.python.org/)
 [![Streamlit App](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
 [![Groq AI](https://img.shields.io/badge/Groq%20LLaMA%203.3-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com/)
