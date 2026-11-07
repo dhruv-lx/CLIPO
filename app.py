@@ -319,19 +319,23 @@ with tab_auto:
     current_result = st.session_state.get("last_result", None)
 
     # If no run this session, check if there's sample clip_data.json
-    if not current_result and Path("clip_data.json").exists():
-        try:
-            with open("clip_data.json", encoding="utf-8") as f:
-                saved_data = json.load(f)
-                if saved_data.get("clips"):
-                    st.info("💡 Displaying previously analyzed clips from `clip_data.json`:")
-                    current_result = type("Obj", (), {
-                        "source": saved_data.get("url", "Demo Video"),
-                        "clips": saved_data.get("clips", []),
-                        "rendered_files": list(Path("output").glob("clip_*.mp4")),
-                    })()
-        except Exception:
-            pass
+    if not current_result:
+        sample_candidates = [Path("examples/clip_data.json"), Path("clip_data.json")]
+        for sc in sample_candidates:
+            if sc.exists():
+                try:
+                    with open(sc, encoding="utf-8") as f:
+                        saved_data = json.load(f)
+                        if saved_data.get("clips"):
+                            st.info("💡 Displaying pre-analyzed demo clips from `examples/clip_data.json`:")
+                            current_result = type("Obj", (), {
+                                "source": saved_data.get("url", "Demo Video"),
+                                "clips": saved_data.get("clips", []),
+                                "rendered_files": list(Path("output").glob("clip_*.mp4")),
+                            })()
+                            break
+                except Exception:
+                    pass
 
     if current_result and getattr(current_result, "clips", None):
         st.divider()
@@ -652,3 +656,4 @@ with tab_settings:
                 pass
         st.success(f"Cleared {cleaned} cached file(s)!")
         st.rerun()
+

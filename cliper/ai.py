@@ -106,10 +106,18 @@ def parse_clips_json(text: str) -> list[dict]:
     return formatted_clips
 
 
+FALLBACK_MODELS = [
+    "qwen/qwen3.8-27b",
+    "openai/gpt-oss-120b",
+    "llama-3.3-70b-versatile",
+    "llama3-70b-8192",
+]
+
+
 def call_groq_chunk(
     client: Groq,
     segments: list[dict],
-    model: str = "llama-3.3-70b-versatile",
+    model: str = "qwen/qwen3.8-27b",
     min_duration: int = 30,
     max_duration: int = 60,
     max_retries: int = 3,
@@ -122,24 +130,34 @@ def call_groq_chunk(
         transcript=transcript_text,
     )
 
-    for attempt in range(1, max_retries + 1):
-        try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": "You are a professional video editor specializing in YouTube Shorts and TikTok."},
-                    {"role": "user", "content": prompt},
-                ],
-                temperature=0.3,
-            )
-            raw_reply = response.choices[0].message.content or ""
-            return parse_clips_json(raw_reply)
-        except (GroqError, ValueError) as err:
-            if attempt < max_retries:
-                time.sleep(2)
-            else:
-                print(f"Warning: Chunk evaluation failed after {max_retries} attempts: {err}")
-                return []
+    candidate_models = [model] + [m for m in FALLBACK_MODELS if m != model]
+
+    for current_model in candidate_models:
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = client.chat.completions.create(
+                    model=current_model,
+                    messages=[
+                        {"role": "system", "content": "You are a professional video editor specializing in YouTube Shorts and TikTok."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    temperature=0.3,
+                )
+                raw_reply = response.choices[0].message.content or ""
+                return parse_clips_json(raw_reply)
+            except GroqError as gerr:
+                # If model is not found, try next candidate model immediately
+                if "model_not_found" in str(gerr) or "does not exist" in str(gerr):
+                    break
+                if attempt < max_retries:
+                    time.sleep(2)
+                else:
+                    break
+            except Exception as err:
+                if attempt < max_retries:
+                    time.sleep(2)
+                else:
+                    break
     return []
 
 
@@ -165,7 +183,7 @@ def merge_overlapping_clips(clips: list[dict], threshold_sec: float = 6.0) -> li
 def find_viral_clips(
     segments: list[dict],
     api_key: str,
-    model: str = "llama-3.3-70b-versatile",
+    model: str = "qwen/qwen3.8-27b",
     chunk_minutes: int = 5,
     min_duration: int = 30,
     max_duration: int = 60,
@@ -218,3 +236,4 @@ def find_viral_clips(
             clip["text"] = " ".join(spoken_tokens)
 
     return all_clips
+

@@ -188,3 +188,4 @@ def save_srt(segments: list[dict], path: Path):
             e_ts = sec_to_ts(seg["end"], include_ms=True)
             text = seg["text"].strip()
             f.write(f"{i}\n{s_ts} --> {e_ts}\n{text}\n\n")
+

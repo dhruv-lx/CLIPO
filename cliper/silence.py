@@ -107,3 +107,4 @@ def remove_silence_from_clip(clip, silences: list[tuple[float, float]], pad_sec:
         return chunks[0]
 
     return concatenate_videoclips(chunks, method="chain")
+

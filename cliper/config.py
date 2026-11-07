@@ -18,7 +18,7 @@ class Config:
     """Global configuration settings for Cliper."""
     # Groq API configuration
     groq_api_key: str = field(default_factory=lambda: os.getenv("GROQ_API_KEY", ""))
-    groq_model: str = field(default_factory=lambda: os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    groq_model: str = field(default_factory=lambda: os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b"))
     
     # Whisper configuration
     whisper_model: str = field(default_factory=lambda: os.getenv("WHISPER_MODEL", "base"))
@@ -62,3 +62,4 @@ class Config:
 
 # Default global instance
 default_config = Config()
+

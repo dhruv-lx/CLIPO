@@ -8,14 +8,22 @@ import sys
 import json
 from pathlib import Path
 
+# Add project root to sys.path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 import cliper
 from cliper.config import default_config
 
 
 def main():
-    json_path = Path("clip_data.json")
+    # Check current directory and examples directory
+    json_path = ROOT_DIR / "examples" / "clip_data.json"
     if not json_path.is_file():
-        print("clip_data.json not found. Run get_timestamps.py first or specify path.")
+        json_path = ROOT_DIR / "clip_data.json"
+    if not json_path.is_file():
+        print("clip_data.json not found in examples/ or root. Run get_timestamps.py first.")
         sys.exit(1)
 
     with open(json_path, encoding="utf-8") as f:
@@ -28,7 +36,7 @@ def main():
         sys.exit(1)
 
     print(f"🎬 Processing {len(clips)} clip(s) from {source}...")
-    output_dir = Path("output")
+    output_dir = ROOT_DIR / "output"
     output_dir.mkdir(exist_ok=True)
 
     for idx, clip in enumerate(clips, 1):

@@ -1,12 +1,16 @@
 """
 clip_video.py — Quick precision clipper from YouTube URLs or local video files.
-Updated to use Cliper core engine with safe local file handling.
-
-Usage: python clip_video.py [URL_or_path] [START] [END] [output.mp4]
+Usage: python scripts/clip_video.py [URL_or_path] [START] [END] [output.mp4]
 """
 
 import sys
 from pathlib import Path
+
+# Add project root to sys.path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 import cliper
 from cliper.audio import ts_to_sec
 
@@ -23,7 +27,7 @@ def main():
         source, start, end = args[0], args[1], args[2]
         output = args[3] if len(args) > 3 else "clip.mp4"
     else:
-        print("Usage: python clip_video.py <URL|path> <start> <end> [output.mp4]")
+        print("Usage: python scripts/clip_video.py <URL|path> <start> <end> [output.mp4]")
         sys.exit(1)
 
     print(f"\n✂️ Clipping {start} -> {end} from {source}...")

@@ -53,11 +53,20 @@ def download_source_video(
     return out_path
 
 
+def make_even(n: int) -> int:
+    """Ensure integer is strictly even for H.264 video encoders."""
+    val = int(round(n))
+    return val if val % 2 == 0 else val - 1
+
+
 def crop_to_ratio(clip, target_w: int = 1080, target_h: int = 1920, center_bias: float = 0.5):
     """
     Intelligently crop video clip to target aspect ratio (default 9:16 vertical 1080x1920).
     `center_bias` ranges from 0.0 (left-aligned) to 0.5 (centered) to 1.0 (right-aligned).
     """
+    target_w = make_even(target_w)
+    target_h = make_even(target_h)
+
     src_w, src_h = clip.w, clip.h
     target_ratio = target_w / target_h
 
@@ -70,14 +79,17 @@ def crop_to_ratio(clip, target_w: int = 1080, target_h: int = 1920, center_bias:
         crop_w = src_w
         crop_h = int(src_w / target_ratio)
 
+    crop_w = make_even(crop_w)
+    crop_h = make_even(crop_h)
+
     # Position crop window horizontally based on center bias
     total_slack_x = src_w - crop_w
-    x1 = int(total_slack_x * center_bias)
-    y1 = (src_h - crop_h) // 2
+    x1 = make_even(int(total_slack_x * center_bias))
+    y1 = make_even((src_h - crop_h) // 2)
 
     return (
         clip.cropped(x1=x1, y1=y1, x2=x1 + crop_w, y2=y1 + crop_h)
-        .resized(width=target_w, height=target_h)
+        .resized(new_size=(target_w, target_h))
     )
 
 
@@ -155,10 +167,11 @@ def cut_clip(
             clip = crop_to_ratio(clip, target_w, target_h, center_bias=center_bias)
         elif aspect_ratio == "16:9":
             target_w, target_h = 1920, 1080
-            # Keep original wide framing, ensure max 1080p
             if clip.h > 1080:
-                clip = clip.resized(height=1080)
-            target_w, target_h = clip.w, clip.h
+                clip = clip.resized(new_size=(make_even(clip.w * (1080 / clip.h)), 1080))
+            target_w, target_h = make_even(clip.w), make_even(clip.h)
+            if (target_w, target_h) != (clip.w, clip.h):
+                clip = clip.resized(new_size=(target_w, target_h))
 
         # 2. Silence detection & jump cuts
         if remove_silence:
@@ -185,11 +198,17 @@ def cut_clip(
         # 4. Progress bar overlay
         layers = [clip]
         if add_progress_bar and clip.duration > 2.0:
-            bar = make_progress_bar(clip.duration, width=target_w, height=6, color_rgb=bar_color)
-            bar = bar.with_position((0, target_h - 6))
+            bar = make_progress_bar(clip.duration, width=clip.w, height=6, color_rgb=bar_color)
+            bar = bar.with_position((0, clip.h - 6))
             layers.append(bar)
 
         final_clip = CompositeVideoClip(layers) if len(layers) > 1 else clip
+
+        # Guarantee even dimensions for H.264
+        fw = make_even(final_clip.w)
+        fh = make_even(final_clip.h)
+        if (fw, fh) != (final_clip.w, final_clip.h):
+            final_clip = final_clip.resized(new_size=(fw, fh))
 
         if progress_callback:
             progress_callback(f"Encoding MP4: {out_file.name}…")
@@ -217,3 +236,4 @@ def cut_clip(
                 temp_download.unlink()
             except Exception:
                 pass
+

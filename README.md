@@ -185,6 +185,11 @@ cliper/
 │   ├── silence.py          # RMS audio analysis & jump-cut generator
 │   └── pipeline.py         # Autonomous end-to-end pipeline runner
 │
+├── scripts/                # Standalone automation scripts
+│   ├── clip_video.py       # Quick manual precision clipper
+│   ├── get_timestamps.py   # AI hook finder to JSON
+│   └── cut_clips.py        # Batch JSON cutter & 9:16 framer
+│
 ├── examples/               # Sample outputs & reference files
 │   ├── clip_data.json      # Sample AI viral hooks output
 │   └── full_transcript.srt # Sample subtitle file
@@ -224,3 +229,4 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 <div align="center">
 Built with passion by <b>Dhruv</b> • Star ⭐ this repo if you find it helpful!
 </div>
+
